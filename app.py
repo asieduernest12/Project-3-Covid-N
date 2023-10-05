@@ -16,7 +16,8 @@ import os
 # cs_engine = create_engine(cs_db)
 
 # db = "sqlite:////Users/isabelsmorrison/Personal/Data_Analytics_Bootcamp/Projects/Project3/Project-3-Covid/Data/CA_COVID_data.sqlite" #use relative path instead
-# engine = create_engine(db)
+db = "sqlite:///Data/CA_COVID_data.sqlite" #use relative path instead
+engine = create_engine(db)
 # inspector = inspect(engine)
 # print(inspector.get_table_names())
 
@@ -122,9 +123,9 @@ def case_surv():
   
 #   return jsonify({'success': 'ok'})
 
-# @app.route("/")
-# def index():
-#     return render_template('index.html')
+@app.route("/")
+def index():
+    return render_template('index.html')
 
 @app.route("/api/v1.0/vaccine_data")
 # @cross_origin(origin='*')
@@ -160,4 +161,4 @@ def api_vaccine():
     return jsonify(all_vaccine_data)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,host="0.0.0.0")

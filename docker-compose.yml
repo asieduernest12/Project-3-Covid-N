@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    command: ["python", "-u", "app.py"]
+    volumes:
+      - .:/app
+    # depends_on:
+    #   - db
+    environment:
+      FLASK_APP: app.py
+      FLASK_ENV: development
+      DATABASE_URL: sqlite:////Project-3-Covid/Data/CA_COVID_data.sqlite
+  # db:
+  #   image: "postgres:13"
+  #   environment:
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_PASSWORD: example
+  #     POSTGRES_DB: covid_data
+  #   volumes:
+  #     - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:
